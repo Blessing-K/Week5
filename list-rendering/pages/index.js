@@ -1,5 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import ItemList from "../components/ItemList";
+import ItemList from "../components/ItemList"; //imported ItemList to index.js
 
 const geistSans = Geist({
   variable: "--font-geist-sans",

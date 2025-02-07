@@ -1,5 +1,6 @@
 import { useState } from "react";
 
+//function to show list
 function ItemList () {
     const [items, setItems] = useState([
         {id: 1, name: "Apple"}, 
@@ -8,16 +9,18 @@ function ItemList () {
         {id:4, name:"Apricot"}
     ]);
 
-    const [newItem, setNewItem] = useState("");
-    const [filterA, setFilterA] = useState(false);
+    const [newItem, setNewItem] = useState(""); //to track user input
+    const [filterA, setFilterA] = useState(false); //new state for filtering
 
+    //function to add a new item
     const AddItem = () => {
-        if (newItem.trim() === "") return;
+        if (newItem.trim() === "") return; // to prevent empty item
         const newItemObj = { id: items.length + 1, name: newItem };
         setItems([...items, newItemObj]);
         setNewItem("");
       };
 
+      //function to delete an item
       const DeleteItem = (id) => {
         setItems(items.filter(item => item.id !== id)); 
     };
@@ -25,6 +28,7 @@ function ItemList () {
     return (
         <div>
            <h2>Item List</h2>
+           {/* Adding labeled checkbox */}
            <label>
                 <input 
                     type="checkbox"
@@ -35,7 +39,7 @@ function ItemList () {
             </label>
            <ul>
                 {items
-                .filter(item => !filterA || item.name.startsWith("A"))
+                .filter(item => !filterA || item.name.startsWith("A")) //filtering logic
                 .map((item) => (
                     <li key={item.id}>
                         {item.name}
